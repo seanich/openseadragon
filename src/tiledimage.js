@@ -1482,16 +1482,18 @@ function providesCoverage( coverage, level, x, y ) {
  * nor y is given, returns true if the entire visible level is covered.
  */
 function isCovered( coverage, level, x, y ) {
-    if ( x === undefined || y === undefined ) {
-        return providesCoverage( coverage, level + 1 );
-    } else {
-        return (
-             providesCoverage( coverage, level + 1, 2 * x, 2 * y ) &&
-             providesCoverage( coverage, level + 1, 2 * x, 2 * y + 1 ) &&
-             providesCoverage( coverage, level + 1, 2 * x + 1, 2 * y ) &&
-             providesCoverage( coverage, level + 1, 2 * x + 1, 2 * y + 1 )
-        );
-    }
+    // Prevents an issue with blank tiles between levels
+    return false;
+    // if ( x === undefined || y === undefined ) {
+    //     return providesCoverage( coverage, level + 1 );
+    // } else {
+    //     return (
+    //          providesCoverage( coverage, level + 1, 2 * x, 2 * y ) &&
+    //          providesCoverage( coverage, level + 1, 2 * x, 2 * y + 1 ) &&
+    //          providesCoverage( coverage, level + 1, 2 * x + 1, 2 * y ) &&
+    //          providesCoverage( coverage, level + 1, 2 * x + 1, 2 * y + 1 )
+    //     );
+    // }
 }
 
 /**
