@@ -1337,6 +1337,9 @@ $.extend( $.Viewer.prototype, $.EventSource.prototype, $.ControlDock.prototype, 
         } else if ($.isPlainObject(options.ajaxHeaders) && $.isPlainObject(this.ajaxHeaders)) {
             options.ajaxHeaders = $.extend({}, this.ajaxHeaders, options.ajaxHeaders);
         }
+        if (options.CustomImageJob === undefined || options.CustomImageJob === null) {
+            options.CustomImageJob = this.CustomImageJob;
+        }
 
         var myQueueItem = {
             options: options
@@ -1451,6 +1454,7 @@ $.extend( $.Viewer.prototype, $.EventSource.prototype, $.ControlDock.prototype, 
                     ajaxWithCredentials: queueItem.options.ajaxWithCredentials,
                     loadTilesWithAjax: queueItem.options.loadTilesWithAjax,
                     ajaxHeaders: queueItem.options.ajaxHeaders,
+                    CustomImageJob: queueItem.options.CustomImageJob,
                     debugMode: _this.debugMode
                 });
 

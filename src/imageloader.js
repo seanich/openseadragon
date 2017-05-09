@@ -200,6 +200,7 @@ $.ImageLoader.prototype = {
      * requests.
      * @param {Function} [options.callback] - Called once image has been downloaded.
      * @param {Function} [options.abort] - Called when this image job is aborted.
+     * @param {Function} [options.CustomImageJob] - A custom image job constructor.
      */
     addJob: function(options) {
         var _this = this,
@@ -216,7 +217,7 @@ $.ImageLoader.prototype = {
                 abort: options.abort,
                 timeout: this.timeout
             },
-            newJob = new ImageJob(jobOptions);
+            newJob = options.CustomImageJob ? new options.CustomImageJob(jobOptions) : new ImageJob(jobOptions);
 
         if ( !this.jobLimit || this.jobsInProgress < this.jobLimit ) {
             newJob.start();

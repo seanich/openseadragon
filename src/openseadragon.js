@@ -639,6 +639,9 @@
   * @property {Object} [ajaxHeaders={}]
   *     A set of headers to include when making AJAX requests for tile sources or tiles.
   *
+  * @property {Function} [CustomImageJob=null]
+  *     A custom image job constructor to use when loading tiles.
+  *
   */
 
  /**
@@ -1059,6 +1062,7 @@ function OpenSeadragon( options ){
             ajaxWithCredentials:    false,
             loadTilesWithAjax:      false,
             ajaxHeaders:            {},
+            CustomImageJob:         null,
 
             //PAN AND ZOOM SETTINGS AND CONSTRAINTS
             panHorizontal:          true,
